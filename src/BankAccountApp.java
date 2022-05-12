@@ -3,11 +3,14 @@ import java.util.Scanner;
 
 public class BankAccountApp {
     public static ArrayList<BankAccount> bankAccounts = new ArrayList<>();
+    public static Scanner in = new Scanner(System.in);
 
     public static void main(String[] args) {
-        Scanner in = new Scanner(System.in);
+        // sample accounts for testing
+        bankAccounts.add(new BankAccount("Betty", 3_000, 101));
+        bankAccounts.add(new BankAccount("Chris", 1_000, 102));
 
-        System.out.println("Hello world! Welcome to the Bank of Win!");
+        System.out.println("Welcome to the Bank of Win!");
 
         while (true) {
             System.out.println("Are you an existing customer? (0 to exit)");
@@ -18,7 +21,7 @@ public class BankAccountApp {
 
             if (input == 1) {
                 System.out.println("What account number would you like to access?");
-                String acctNum = in.nextLine();
+                int acctNum = Integer.parseInt(in.nextLine());
 
                 boolean found = false;
                 int index = -1;
@@ -56,40 +59,38 @@ public class BankAccountApp {
                 break;
             }
         }
-
-        in.close();
     }
 
     public static void mainMenu(BankAccount acct) {
-        Scanner in = new Scanner(System.in);
-
         System.out.println("Hello " + acct.getName() + ", welome to the main menu.");
 
         while (true) {
             System.out.println("""
-                        Please select from the following options:
-                        1. Check account balance
-                        2. Make a withdrawal
-                        3. Make a deposit
-                        4. Transfer funds to another account
-                        0. Exit
-                    """);
+            Please select from the following options:
+            1. Check account balance
+            2. Make a withdrawal
+            3. Make a deposit
+            4. Transfer funds to another account
+            0. Exit
+            """);
 
             int choice = Integer.valueOf(in.nextLine());
             
             if (choice == 1) {
-                acct.getBalance();
+                System.out.println(acct.getBalance());
             } else if (choice == 2) {
                 System.out.println("Enter an amount to withdraw:");
                 double amt = Integer.valueOf(in.nextLine());
                 acct.withdrawal(amt);
+                System.out.println("New balance: " + acct.getBalance());
             } else if (choice == 3) {
                 System.out.println("Enter an amount to deposit:");
                 double amt = Integer.valueOf(in.nextLine());
                 acct.deposit(amt);
+                System.out.println("New balance: " + acct.getBalance());
             } else if (choice == 4) {
                 System.out.println("Enter the account number you would like to transfer to:");
-                String targetAcct = in.nextLine();
+                int targetAcct = Integer.parseInt(in.nextLine());
 
                 boolean found = false;
                 int index = -1;
@@ -106,7 +107,7 @@ public class BankAccountApp {
                     System.out.println("Account located. What amount would you like to transfer?");
                     double amt = Double.valueOf(in.nextLine());
                     acct.transfer(bankAccounts.get(index), amt);
-                    System.out.println("Transfer of " + amt
+                    System.out.println("Transfer of $" + amt
                             + " from " + acct.getName()
                             + " to " + bankAccounts.get(index).getName()
                             + " complete.");
@@ -117,6 +118,5 @@ public class BankAccountApp {
                 break;
             }
         }
-        in.close();
     }
 }

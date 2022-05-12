@@ -1,9 +1,9 @@
 public class BankAccount {
     private String name;
     private double balance;
-    private String acctNumber;
+    private int acctNumber;
 
-    public BankAccount(String customerName, int accountBalance, String acctNumber) {
+    public BankAccount(String customerName, int accountBalance, int acctNumber) {
         this.name = customerName;
         this.balance = accountBalance;
         this.acctNumber = acctNumber;
@@ -25,7 +25,7 @@ public class BankAccount {
         this.balance = balance; 
     }
 
-    public String getAcctNumber() { 
+    public int getAcctNumber() { 
         return this.acctNumber; 
     }
 
@@ -44,6 +44,6 @@ public class BankAccount {
 
     @Override
     public String toString() {
-        return "Account #" + acctNumber + " belongs to " + name + " and the balance is $" + balance;
+        return "Account #" + getAcctNumber() + " belongs to " + getName() + " and the balance is $" + getBalance();
     }
 }
