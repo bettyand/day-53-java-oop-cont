@@ -3,20 +3,23 @@ import java.util.Scanner;
 
 public class BankAccountApp {
     public static ArrayList<BankAccount> bankAccounts = new ArrayList<>();
+
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
 
         System.out.println("Hello world! Welcome to the Bank of Win!");
-        System.out.println("Are you an existing customer? (0 to exit)");
-        System.out.println("1. Yes");
-        System.out.println("2. No");
-        int input = Integer.parseInt(in.nextLine());
 
         while (true) {
+            System.out.println("Are you an existing customer? (0 to exit)");
+            System.out.println("1. Yes");
+            System.out.println("2. No");
+
+            int input = Integer.parseInt(in.nextLine());
+
             if (input == 1) {
                 System.out.println("What account number would you like to access?");
                 String acctNum = in.nextLine();
-                
+
                 boolean found = false;
                 int index = -1;
                 for (int i = 0; i < bankAccounts.size(); i++) {
@@ -33,7 +36,7 @@ public class BankAccountApp {
                 } else {
                     System.out.println("Error");
                 }
-                
+
             } else if (input == 2) {
                 System.out.println("Let's make a new account!");
                 BankAccount newAcct = new BankAccount();
@@ -61,18 +64,19 @@ public class BankAccountApp {
         Scanner in = new Scanner(System.in);
 
         System.out.println("Hello " + acct.getName() + ", welome to the main menu.");
-        System.out.println("""
-            Please select from the following options:
-            1. Check account balance
-            2. Make a withdrawal
-            3. Make a deposit
-            4. Transfer funds to another account
-            0. Exit
-        """);
-        
-        int choice = Integer.valueOf(in.nextLine());
 
         while (true) {
+            System.out.println("""
+                        Please select from the following options:
+                        1. Check account balance
+                        2. Make a withdrawal
+                        3. Make a deposit
+                        4. Transfer funds to another account
+                        0. Exit
+                    """);
+
+            int choice = Integer.valueOf(in.nextLine());
+            
             if (choice == 1) {
                 acct.getBalance();
             } else if (choice == 2) {
@@ -102,10 +106,10 @@ public class BankAccountApp {
                     System.out.println("Account located. What amount would you like to transfer?");
                     double amt = Double.valueOf(in.nextLine());
                     acct.transfer(bankAccounts.get(index), amt);
-                    System.out.println("Transfer of " + amt 
-                    + " from " + acct.getName() 
-                    + " to " + bankAccounts.get(index).getName() 
-                    + " complete.");
+                    System.out.println("Transfer of " + amt
+                            + " from " + acct.getName()
+                            + " to " + bankAccounts.get(index).getName()
+                            + " complete.");
                 } else {
                     System.out.println("Error");
                 }
