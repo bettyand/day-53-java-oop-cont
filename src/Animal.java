@@ -7,6 +7,14 @@ public class Animal {
         this.isDog = isDog;
     }
 
+    public Animal(String name) {
+        this.name = name;
+    }
+
+    public Animal(boolean isDog) {
+        this.isDog = isDog;
+    }
+
     public String getName() {
         return name;
     }

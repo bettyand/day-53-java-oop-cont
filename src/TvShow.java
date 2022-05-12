@@ -9,6 +9,25 @@ public class TvShow {
         this.genre = genre;
     }
 
+    public TvShow(String showName, int numEpisodes) {
+        this.showName = showName;
+        this.numEpisodes = numEpisodes;
+    }
+
+    public TvShow(String showName, String genre) {
+        this.showName = showName;
+        this.genre = genre;
+    }
+
+    public TvShow(int numEpisodes, String genre) {
+        this.numEpisodes = numEpisodes;
+        this.genre = genre;
+    }
+
+    public TvShow(String showName) {
+        this.showName = showName;
+    }
+
     public String getShowName() { return showName; }
     public void setShowName(String showName) { this.showName = showName; }
 

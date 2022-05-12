@@ -9,6 +9,19 @@ public class Book {
         this.pubYear = publicationYear;
     }
 
+    public Book(String title, int numberOfPages) {
+        this.title = title;
+        this.numPages = numberOfPages;
+    }
+
+    public Book(String title) {
+        this.title = title;
+    }
+
+    public Book(int publicationYear) {
+        this.pubYear = publicationYear;
+    }
+
     public String getTitle() { return title; }
 
     @Override
