@@ -22,7 +22,11 @@ public class Book {
         this.pubYear = publicationYear;
     }
 
-    public String getTitle() { return title; }
+    public String getTitle() { return this.title; }
+
+    public int getNumPages() { return this.numPages; }
+
+    public int getPubYear() { return this.pubYear; }
 
     @Override
     public String toString() {
